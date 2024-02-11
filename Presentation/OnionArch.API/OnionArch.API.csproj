@@ -16,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\Infrastructure\OnionArch.Persistence\OnionArch.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\OnionArch.Persistence\OnionArch.Persistence.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
