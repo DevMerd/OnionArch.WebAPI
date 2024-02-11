@@ -16,11 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\OnionArch.Application\OnionArch.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\OnionArch.Persistence\OnionArch.Persistence.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
