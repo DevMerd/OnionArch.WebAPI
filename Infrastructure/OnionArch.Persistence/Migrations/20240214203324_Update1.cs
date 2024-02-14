@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnionArch.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Update1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -76,8 +76,8 @@ namespace OnionArch.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
@@ -94,24 +94,24 @@ namespace OnionArch.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryProduct",
+                name: "ProductCategories",
                 columns: table => new
                 {
-                    CategoriesId = table.Column<int>(type: "int", nullable: false),
-                    ProductsId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryProduct", x => new { x.CategoriesId, x.ProductsId });
+                    table.PrimaryKey("PK_ProductCategories", x => new { x.ProductId, x.CategoryId });
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Categories_CategoriesId",
-                        column: x => x.CategoriesId,
+                        name: "FK_ProductCategories_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Products_ProductsId",
-                        column: x => x.ProductsId,
+                        name: "FK_ProductCategories_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -122,9 +122,9 @@ namespace OnionArch.Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(3510), false, "Home & Automotive" },
-                    { 2, new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(3542), false, "Music & Kids" },
-                    { 3, new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(3557), true, "Sports" }
+                    { 1, new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(4463), false, "Home, Computers & Books" },
+                    { 2, new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(4487), false, "Toys, Health & Outdoors" },
+                    { 3, new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(4500), true, "Clothing, Home & Grocery" }
                 });
 
             migrationBuilder.InsertData(
@@ -132,10 +132,10 @@ namespace OnionArch.Persistence.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "ParentId", "Priorty" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7304), false, "Elektrik", 0, 1 },
-                    { 2, new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7308), false, "Moda", 0, 2 },
-                    { 3, new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7310), false, "Bilgisayar", 1, 1 },
-                    { 4, new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7312), false, "Kadın", 2, 1 }
+                    { 1, new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6615), false, "Elektrik", 0, 1 },
+                    { 2, new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6617), false, "Moda", 0, 2 },
+                    { 3, new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6618), false, "Bilgisayar", 1, 1 },
+                    { 4, new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6619), false, "Kadın", 2, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -143,9 +143,9 @@ namespace OnionArch.Persistence.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedDate", "Description", "IsDeleted", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 1, 20, 21, 7, 8, 786, DateTimeKind.Local).AddTicks(1234), "Quis tv sıla beatae praesentium.", false, "Qui." },
-                    { 2, 3, new DateTime(2024, 1, 20, 21, 7, 8, 786, DateTimeKind.Local).AddTicks(1309), "Suscipit beğendim ea açılmadan orta.", true, "Quae beatae." },
-                    { 3, 4, new DateTime(2024, 1, 20, 21, 7, 8, 786, DateTimeKind.Local).AddTicks(1372), "Ad kapının sandalye commodi kalemi.", false, "Koşuyorlar." }
+                    { 1, 1, new DateTime(2024, 2, 14, 23, 33, 24, 164, DateTimeKind.Local).AddTicks(9861), "Architecto masanın dolorem patlıcan mutlu.", false, "Veritatis." },
+                    { 2, 3, new DateTime(2024, 2, 14, 23, 33, 24, 164, DateTimeKind.Local).AddTicks(9893), "Fugit düşünüyor bahar için in.", true, "Voluptatem kulu." },
+                    { 3, 4, new DateTime(2024, 2, 14, 23, 33, 24, 164, DateTimeKind.Local).AddTicks(9918), "Qui qui kulu öyle quasi.", false, "Ratione." }
                 });
 
             migrationBuilder.InsertData(
@@ -153,18 +153,18 @@ namespace OnionArch.Persistence.Migrations
                 columns: new[] { "Id", "BrandId", "CreatedDate", "Description", "Discount", "IsDeleted", "Price", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 1, 20, 21, 7, 8, 790, DateTimeKind.Local).AddTicks(8018), "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality", 7.614164969692910m, false, 664.25m, "Tasty Soft Ball" },
-                    { 2, 3, new DateTime(2024, 1, 20, 21, 7, 8, 790, DateTimeKind.Local).AddTicks(8252), "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design", 8.941576206597130m, false, 547.89m, "Rustic Fresh Gloves" }
+                    { 1, 1, new DateTime(2024, 2, 14, 23, 33, 24, 168, DateTimeKind.Local).AddTicks(3547), "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016", 1.634418657577950m, false, 959.48m, "Incredible Plastic Pizza" },
+                    { 2, 3, new DateTime(2024, 2, 14, 23, 33, 24, 168, DateTimeKind.Local).AddTicks(3689), "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients", 5.265652387333550m, false, 266.10m, "Tasty Wooden Computer" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CategoryProduct_ProductsId",
-                table: "CategoryProduct",
-                column: "ProductsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Details_CategoryId",
                 table: "Details",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductCategories_CategoryId",
+                table: "ProductCategories",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
@@ -177,16 +177,16 @@ namespace OnionArch.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoryProduct");
-
-            migrationBuilder.DropTable(
                 name: "Details");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "ProductCategories");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Brands");

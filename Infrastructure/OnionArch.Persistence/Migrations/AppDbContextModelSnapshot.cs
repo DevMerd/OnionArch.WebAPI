@@ -22,21 +22,6 @@ namespace OnionArch.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CategoryProduct", b =>
-                {
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoriesId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CategoryProduct");
-                });
-
             modelBuilder.Entity("OnionArch.Domain.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
@@ -64,23 +49,23 @@ namespace OnionArch.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(3510),
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(4463),
                             IsDeleted = false,
-                            Name = "Home & Automotive"
+                            Name = "Home, Computers & Books"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(3542),
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(4487),
                             IsDeleted = false,
-                            Name = "Music & Kids"
+                            Name = "Toys, Health & Outdoors"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(3557),
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(4500),
                             IsDeleted = true,
-                            Name = "Sports"
+                            Name = "Clothing, Home & Grocery"
                         });
                 });
 
@@ -116,7 +101,7 @@ namespace OnionArch.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7304),
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6615),
                             IsDeleted = false,
                             Name = "Elektrik",
                             ParentId = 0,
@@ -125,7 +110,7 @@ namespace OnionArch.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7308),
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6617),
                             IsDeleted = false,
                             Name = "Moda",
                             ParentId = 0,
@@ -134,7 +119,7 @@ namespace OnionArch.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7310),
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6618),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
@@ -143,7 +128,7 @@ namespace OnionArch.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 781, DateTimeKind.Local).AddTicks(7312),
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 162, DateTimeKind.Local).AddTicks(6619),
                             IsDeleted = false,
                             Name = "Kadın",
                             ParentId = 2,
@@ -187,28 +172,28 @@ namespace OnionArch.Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 786, DateTimeKind.Local).AddTicks(1234),
-                            Description = "Quis tv sıla beatae praesentium.",
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 164, DateTimeKind.Local).AddTicks(9861),
+                            Description = "Architecto masanın dolorem patlıcan mutlu.",
                             IsDeleted = false,
-                            Title = "Qui."
+                            Title = "Veritatis."
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 786, DateTimeKind.Local).AddTicks(1309),
-                            Description = "Suscipit beğendim ea açılmadan orta.",
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 164, DateTimeKind.Local).AddTicks(9893),
+                            Description = "Fugit düşünüyor bahar için in.",
                             IsDeleted = true,
-                            Title = "Quae beatae."
+                            Title = "Voluptatem kulu."
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 4,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 786, DateTimeKind.Local).AddTicks(1372),
-                            Description = "Ad kapının sandalye commodi kalemi.",
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 164, DateTimeKind.Local).AddTicks(9918),
+                            Description = "Qui qui kulu öyle quasi.",
                             IsDeleted = false,
-                            Title = "Koşuyorlar."
+                            Title = "Ratione."
                         });
                 });
 
@@ -254,39 +239,39 @@ namespace OnionArch.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 790, DateTimeKind.Local).AddTicks(8018),
-                            Description = "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-                            Discount = 7.614164969692910m,
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 168, DateTimeKind.Local).AddTicks(3547),
+                            Description = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+                            Discount = 1.634418657577950m,
                             IsDeleted = false,
-                            Price = 664.25m,
-                            Title = "Tasty Soft Ball"
+                            Price = 959.48m,
+                            Title = "Incredible Plastic Pizza"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 1, 20, 21, 7, 8, 790, DateTimeKind.Local).AddTicks(8252),
-                            Description = "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
-                            Discount = 8.941576206597130m,
+                            CreatedDate = new DateTime(2024, 2, 14, 23, 33, 24, 168, DateTimeKind.Local).AddTicks(3689),
+                            Description = "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+                            Discount = 5.265652387333550m,
                             IsDeleted = false,
-                            Price = 547.89m,
-                            Title = "Rustic Fresh Gloves"
+                            Price = 266.10m,
+                            Title = "Tasty Wooden Computer"
                         });
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("OnionArch.Domain.Entities.ProductCategory", b =>
                 {
-                    b.HasOne("OnionArch.Domain.Entities.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
-                    b.HasOne("OnionArch.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("OnionArch.Domain.Entities.Detail", b =>
@@ -311,9 +296,35 @@ namespace OnionArch.Persistence.Migrations
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("OnionArch.Domain.Entities.ProductCategory", b =>
+                {
+                    b.HasOne("OnionArch.Domain.Entities.Category", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnionArch.Domain.Entities.Product", "Product")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("OnionArch.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Details");
+
+                    b.Navigation("ProductCategories");
+                });
+
+            modelBuilder.Entity("OnionArch.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("ProductCategories");
                 });
 #pragma warning restore 612, 618
         }
