@@ -17,9 +17,9 @@ namespace OnionArch.Application.Features.Products.Command.CreateProduct
         {
             Product product = new Product(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
             await _unitOfWork.GetWriteRepository<Product>().AddAsync(product);
-            if(await _unitOfWork.SaveAsync() > 0)
+            if (await _unitOfWork.SaveAsync() > 0)
             {
-                foreach(var categoryId in request.CategoryIds)
+                foreach (var categoryId in request.CategoryIds)
                 {
                     await _unitOfWork.GetWriteRepository<ProductCategory>().AddAsync(new()
                     {

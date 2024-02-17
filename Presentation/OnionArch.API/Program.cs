@@ -1,6 +1,7 @@
 using OnionArch.Persistence;
 using OnionArch.Application;
 using OnionArch.Mapper;
+using OnionArch.Application.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandlingMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
