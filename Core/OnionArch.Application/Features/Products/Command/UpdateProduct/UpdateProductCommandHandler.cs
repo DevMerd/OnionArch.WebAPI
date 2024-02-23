@@ -2,10 +2,11 @@
 using OnionArch.Application.Interfaces.AutoMapper;
 using OnionArch.Application.Interfaces.UnitOfWorks;
 using OnionArch.Domain.Entities;
+using System.Reflection.Metadata.Ecma335;
 
 namespace OnionArch.Application.Features.Products.Command.UpdateProduct
 {
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest>
+    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest, Unit>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -16,7 +17,7 @@ namespace OnionArch.Application.Features.Products.Command.UpdateProduct
             _mapper = mapper;
         }
 
-        public async Task Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
         {
             var product = await _unitOfWork.GetReadRepository<Product>().GetAsync(p => p.Id == request.Id && !p.IsDeleted);
             var map = _mapper.Map<Product, UpdateProductCommandRequest>(request);
@@ -25,7 +26,7 @@ namespace OnionArch.Application.Features.Products.Command.UpdateProduct
 
             await _unitOfWork.GetWriteRepository<ProductCategory>().HardDeleteRangeAsync(productCategories);
 
-            foreach(var categoryId in request.CategoryIds)
+            foreach (var categoryId in request.CategoryIds)
             {
                 await _unitOfWork.GetWriteRepository<ProductCategory>().AddAsync(new()
                 {
@@ -35,6 +36,8 @@ namespace OnionArch.Application.Features.Products.Command.UpdateProduct
             }
             await _unitOfWork.GetWriteRepository<Product>().UpdateAsync(map);
             await _unitOfWork.SaveAsync();
+
+            return Unit.Value;
         }
     }
 }

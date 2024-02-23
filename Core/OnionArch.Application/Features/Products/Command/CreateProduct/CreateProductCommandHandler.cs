@@ -4,7 +4,7 @@ using OnionArch.Domain.Entities;
 
 namespace OnionArch.Application.Features.Products.Command.CreateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest>
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -13,7 +13,7 @@ namespace OnionArch.Application.Features.Products.Command.CreateProduct
             _unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
             Product product = new Product(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
             await _unitOfWork.GetWriteRepository<Product>().AddAsync(product);
@@ -31,6 +31,7 @@ namespace OnionArch.Application.Features.Products.Command.CreateProduct
                 //Double save cause first db operation is for product. I cant use productCategory until product has been created.
                 //So first save for product and second save for pC.
             }
+            return Unit.Value;
         }
     }
 }
