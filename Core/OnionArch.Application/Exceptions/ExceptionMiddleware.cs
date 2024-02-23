@@ -35,8 +35,7 @@ namespace OnionArch.Application.Exceptions
 
             List<string> errors = new List<string>()
             {
-                $"Hata Mesajı : {exception.Message}",
-                $"Mesaj Açıklaması : {exception.InnerException?.ToString()}",
+                $"Hata Mesajı : {exception.Message}"
             };
 
             return httpContext.Response.WriteAsync(new ExceptionModel
