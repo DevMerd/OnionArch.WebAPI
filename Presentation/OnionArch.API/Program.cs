@@ -1,5 +1,6 @@
 using OnionArch.Persistence;
 using OnionArch.Application;
+using OnionArch.Infrastructure;
 using OnionArch.Mapper;
 using OnionArch.Application.Exceptions;
 
@@ -19,6 +20,7 @@ builder.Configuration.SetBasePath(env.ContentRootPath)
 
 //DI
 builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddAplication();
 builder.Services.AddCustomMapper();
 
