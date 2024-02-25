@@ -23,5 +23,11 @@ namespace OnionArch.Application.Features.Auth.Rules
             if (expiryDate <= DateTime.Now) throw new RefreshTokenShouldNotBeExpiredException();
             return Task.CompletedTask;
         }
+
+        public Task EmailOrPasswordShouldBeValid(User? user)
+        {
+            if (user is null) throw new EmailOrPasswordShouldBeValidException();
+            return Task.CompletedTask;
+        }
     }
 }

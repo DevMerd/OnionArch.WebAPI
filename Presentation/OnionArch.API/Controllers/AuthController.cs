@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using OnionArch.Application.Features.Auth.Command.Login;
 using OnionArch.Application.Features.Auth.Command.RefreshToken;
 using OnionArch.Application.Features.Auth.Command.Register;
+using OnionArch.Application.Features.Auth.Command.Revoke;
+using OnionArch.Application.Features.Auth.Command.RevokeAll;
 
 namespace OnionArch.API.Controllers
 {
@@ -37,6 +39,20 @@ namespace OnionArch.API.Controllers
         {
             var response = await _mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Revoke(RevokeCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RevokeAll()
+        {
+            var response = await _mediator.Send(new RevokeAllCommandRequest());
+            return StatusCode(StatusCodes.Status200OK);
         }
     }
 }
