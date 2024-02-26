@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnionArch.Application.Features.Brands.Commands.CreateBrand;
 using OnionArch.Application.Features.Products.Command.CreateProduct;
 using OnionArch.Application.Features.Products.Command.DeleteProduct;
 using OnionArch.Application.Features.Products.Command.UpdateProduct;
@@ -48,7 +49,6 @@ namespace OnionArch.API.Controllers
             await _mediator.Send(request);
             return Ok();
         }
-
 
     }
 }
