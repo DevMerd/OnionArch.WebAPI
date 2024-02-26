@@ -11,16 +11,12 @@ namespace OnionArch.Infrastructure.RedisCache
         private readonly RedisCacheSettings _redisCacheSettings;
         private readonly IDatabase _database;
 
-        public RedisCacheService(IOptions<RedisCacheSettings> options, IDatabase database, RedisCacheSettings redisCacheSettings, ConnectionMultiplexer connectionMultiplexer)
+        public RedisCacheService(IOptions<RedisCacheSettings> options)
         {
             _redisCacheSettings = options.Value;
             var opt = ConfigurationOptions.Parse(_redisCacheSettings.ConnectionString);
             _redisConnection = ConnectionMultiplexer.Connect(opt);
             _database = _redisConnection.GetDatabase();
-
-            _database = database;
-            _redisCacheSettings = redisCacheSettings;
-            _redisConnection = connectionMultiplexer;
         }
 
         public async Task<T> GetAsync<T>(string key)
